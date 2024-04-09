@@ -1,0 +1,43 @@
+,,,ORG     0000H
+0000,02 02 00,,LJMP    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,7B 03,,mov     R3,#3
+0202,74 F4,,mov     A,#500
+0204,,loop1,loop1:
+,,,
+,,,
+0204,7C 01,,mov R4,#00000001B
+0206,75 A0 00,,mov P2,#0
+0209,12 02 1B,,lcall   wait1s
+,,,
+020C,,loop3,loop3:
+020C,8C A0,,        mov     P2,R4
+020E,12 02 1B,,        Lcall   wait1s
+0211,23,,        RL      A
+0212,80 F8,,        Sjmp    loop3
+0214,80 F8 1B,,        djnz    A,loop3
+,,,
+,,,
+,,,
+0217,DB EB,,djnz    R3, loop1
+,,,
+0219,,loop2,loop2:
+0219,80 FE,,sjmp    loop2
+,,,
+,,,
+021B,,wait1s,wait1s:
+021B,79 C8,,        mov     R1,#200
+021D,,here1,here1:
+021D,7A C8,,        mov     R2,#200
+021F,,here2,here2:
+021F,00,,        nop
+0220,00,,        nop
+0221,00,,        nop
+0222,DA FB,,djnz    r2,here2
+0224,D9 F7,,djnz    r1,here1
+,,,
+0226,22,,ret
+,,,
+000E,,,end

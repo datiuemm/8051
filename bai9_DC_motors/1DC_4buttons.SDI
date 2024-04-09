@@ -1,0 +1,31 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,,main1,main1:
+0200,E5 90,,mov     a,p1
+0202,54 07,,anl     a,#00000111b
+0204,B4 07 02,,cjne    a,#00000111b,checky
+0207,80 F7,,sjmp    main1
+,,,
+0209,,checky,checky:
+0209,B4 06 05,,cjne    a,#00000110b,checky1
+020C,75 B0 02,,mov     p3,#00000010B
+020F,80 EF,,sjmp    main1
+,,,
+0211,,checky1,checky1:
+0211,B4 05 05,,cjne    a,#00000101b,checky2
+0214,75 B0 01,,mov     p3,#00000001B
+0217,80 E7,,sjmp    main1
+,,,
+0219,,checky2,checky2:
+0219,B4 03 05,,cjne    a,#00000011b,finale
+021C,75 B0 FF,,mov     p3,#11111111B
+021F,80 DF,,sjmp    main1
+,,,
+0221,,finale,finale:
+0221,80 DD,,sjmp    main1
+,,,
+000E,,,end
+,,,

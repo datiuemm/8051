@@ -1,0 +1,51 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200h
+,,,
+0200,,main,main:
+0200,7B 14,,mov     r3,#20
+0202,7C 14,,mov     r4,#20
+,,,
+0204,,thuan,thuan:
+0204,75 A0 01,,mov     P2,#00000001B
+0207,12 02 42,,lcall   wait1s
+020A,75 A0 02,,mov     P2,#00000010b
+020D,12 02 42,,lcall   wait1s
+0210,75 A0 04,,mov     P2,#00000100b
+0213,12 02 42,,lcall   wait1s
+0216,75 A0 08,,mov     P2,#00001000b
+0219,12 02 42,,lcall   wait1s
+021C,DB E6,,djnz    r3,thuan
+,,,
+021E,80 00,,sjmp    nguoc
+,,,
+0220,,nguoc,nguoc:
+0220,75 A0 08,,mov     P2,#00001000b
+0223,12 02 42,,lcall   wait1s
+0226,75 A0 04,,mov     P2,#00000100b
+0229,12 02 42,,lcall   wait1s
+022C,75 A0 02,,mov     P2,#00000010b
+022F,12 02 42,,lcall   wait1s
+0232,75 A0 01,,mov     P2,#00000001B
+0235,12 02 42,,lcall   wait1s
+0238,DC E6,,djnz    r4,nguoc
+,,,
+023A,,endloop2,endloop2:
+023A,75 A0 00,,mov     P2,#00000000B
+023D,12 02 42,,lcall   wait1s
+0240,80 F8,,sjmp    endloop2
+,,,
+0242,,wait1s,wait1s:
+0242,79 C8,,        mov     R1,#200
+0244,,here1,here1:
+0244,7A C8,,        mov     R2,#200
+0246,,here2,here2:
+0246,00,,        nop
+0247,00,,        nop
+0248,00,,        nop
+0249,DA FB,,djnz    r2,here2
+024B,D9 F7,,djnz    r1,here1
+,,,
+024D,22,,ret
+,,,
+000E,,,end

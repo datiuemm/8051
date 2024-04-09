@@ -1,0 +1,81 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200h
+,,,
+0200,,main,main:
+0200,75 B0 00,,mov     p3,#00H
+0203,7C 01,,mov     r4,#1
+,,,
+0205,,main1,main1:
+0205,E5 A0,,mov     a,p2
+0207,54 07,,anl     a,#00000111b
+0209,B4 07 02,,cjne    a,#00000111b,checky
+020C,80 18,,sjmp    checkmode
+,,,
+020E,,checky,checky:
+020E,B4 06 04,,cjne    a,#00000110b,checky1
+0211,7C 02,,mov     r4,#2
+0213,80 F0,,sjmp    main1
+,,,
+0215,,checky1,checky1:
+0215,B4 05 04,,cjne    a,#00000101b,checky2
+0218,7C 03,,mov     r4,#3
+021A,80 E9,,sjmp    main1
+,,,
+021C,,checky2,checky2:
+021C,B4 03 04,,cjne    a,#00000011b,finale
+021F,7C 04,,mov     r4,#4
+0221,80 E2,,sjmp    main1
+,,,
+0223,,finale,finale:
+0223,02 02 05,,ljmp    main1
+,,,
+0226,,checkmode,checkmode:
+0226,BC 02 15,,cjne    r4,#2,checkmode2
+0229,75 B0 01,,mov     p3,#00000001B
+022C,12 02 62,,lcall   wait1s
+,,,
+022F,75 B0 02,,mov     p3,#00000010B
+0232,12 02 62,,lcall   wait1s
+,,,
+0235,75 B0 04,,mov     p3,#00000100B
+0238,12 02 62,,lcall   wait1s
+,,,
+023B,02 02 05,,ljmp    main1
+,,,
+023E,,checkmode2,checkmode2:
+023E,BC 03 15,,cjne    r4,#3,checkmode3
+,,,
+0241,75 B0 04,,mov     p3,#00000100B
+0244,12 02 62,,lcall   wait1s
+,,,
+0247,75 B0 02,,mov     p3,#00000010B
+024A,12 02 62,,lcall   wait1s
+,,,
+024D,75 B0 01,,mov     p3,#00000001B
+0250,12 02 62,,lcall   wait1s
+,,,
+0253,02 02 05,,ljmp    main1
+,,,
+0256,,checkmode3,checkmode3:
+0256,BC 04 CA,,cjne    r4,#4,finale
+0259,75 B0 00,,mov     p3,#00H
+025C,12 02 62,,lcall   wait1s
+,,,
+025F,02 02 05,,ljmp    main1
+,,,
+0262,,wait1s,wait1s:
+0262,79 C8,,mov     r1,#200
+,,,
+0264,,here1,here1:
+0264,7A C8,,mov     r2,#200
+,,,
+0266,,here2,here2:
+0266,00,,nop
+0267,00,,nop
+0268,00,,nop
+0269,DA FB,,djnz    r2,here2
+026B,D9 F7,,djnz    r1,here1
+026D,22,,ret
+,,,
+000E,,,end

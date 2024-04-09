@@ -1,0 +1,158 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	..\..\vxl2\bai9_DC_motors\2DC_3buttons.ASM
+	Object File:	..\..\vxl2\bai9_DC_motors\2DC_3buttons.hex
+	List File:	..\..\vxl2\bai9_DC_motors\2DC_3buttons.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	org 	0000H
+    2:	  0000	02 02 00	ljmp 	main
+    3:		N      0200	org	200H
+    4:
+    5:	  0200			main:
+    6:	  0200			main1:
+    7:	  0200	E5 90		mov	a,p1
+    8:	  0202	54 07		anl	a,#00000111b
+    9:	  0204	B4 07 02	cjne	a,#00000111b,checky
+   10:	  0207	80 F7		sjmp	main1
+   11:
+   12:	  0209			checky:
+   13:	  0209	B4 06 05	cjne	a,#00000110b,checky1
+   14:	  020C	75 B0 FE	mov	p3,#11111110B
+   15:	  020F	80 EF		sjmp	main1
+   16:
+   17:	  0211			checky1:
+   18:	  0211	B4 05 05	cjne	a,#00000101b,checky2
+   19:	  0214	75 B0 FD	mov	p3,#11111101B
+   20:	  0217	80 E7		sjmp	main1
+   21:
+   22:	  0219			checky2:
+   23:	  0219	B4 03 05	cjne	a,#00000011b,finale
+   24:	  021C	75 B0 0F	mov	p3,#00001111B
+   25:	  021F	80 DF		sjmp	main1
+   26:
+   27:	  0221			finale:
+   28:	  0221	80 DD		sjmp	main1
+   29:
+   30:				end
+
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+CHECKY				  CODE	    0209	  12
+CHECKY1				  CODE	    0211	  17
+CHECKY2				  CODE	    0219	  22
+CY				  BIT	      D7
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+FINALE				  CODE	    0221	  27
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+MAIN				  CODE	    0200	   5
+MAIN1				  CODE	    0200	   6
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6

@@ -1,0 +1,36 @@
+,,,ORG     0000H
+,,,
+0000,,main,main:
+0000,7B 05,,mov     r3,#5
+,,,
+0002,,loop1,loop1:
+0002,75 A0 00,,mov     P2,#00000000B
+,,,
+0005,,loop2,loop2:
+0005,12 00 14,,lcall   wait1s
+0008,E5 A0,,mov     A,P2
+000A,D3,,setb    C
+000B,33,,RLC     A
+000C,F5 A0,,mov     P2,A
+000E,50 F5,,JNC     loop2
+,,,
+0010,DB F0,,DJNZ    r3,loop1
+,,,
+0012,,loop5,loop5:
+0012,80 FE,,sjmp    loop5
+,,,
+0014,,wait1s,wait1s:
+0014,79 C8,,mov     r1,#200
+,,,
+0016,,here1,here1:
+0016,7A C8,,mov     r2,#200
+,,,
+0018,,here2,here2:
+0018,00,,nop
+0019,00,,nop
+001A,00,,nop
+001B,DA FB,,djnz    r2,here2
+001D,D9 F7,,djnz    r1,here1
+001F,22,,ret
+,,,
+000E,,,end

@@ -1,0 +1,239 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	chu_DATT.ASM
+	Object File:	chu_DATT.hex
+	List File:	chu_DATT.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	org	0000H
+    2:	  0000	02 02 00	ljmp	main
+    3:		N      0200	org	200h
+    4:
+    5:	  0200			main:
+    6:	  0200	12 02 0C	lcall	chuD
+    7:	  0203	12 02 3F	lcall	chuA
+    8:	  0206	12 02 72	lcall	chuT
+    9:	  0209	02 02 00	ljmp main
+   10:
+   11:	  020C			chuD:
+   12:	  020C	7B 14		mov	r3,#20
+   13:	  020E			loop1:
+   14:	  020E	75 B0 FE	mov	p3,#11111110b;hang cuoi 1 thi h2-h7 tat
+   15:	  0211	75 A0 3F	mov	P2,#00111111b;cot p2.7
+   16:	  0214	12 02 8A	lcall	wait1s
+   17:
+   18:	  0217	75 B0 FD	mov	p3,#11111101b;hang cuoi 1 thi h2-h7 tat
+   19:	  021A	75 A0 41	mov	P2,#01000001b;cot p2.7
+   20:	  021D	12 02 8A	lcall	wait1s
+   21:
+   22:	  0220	75 B0 C3	mov	p3,#11000011b;hang cuoi 1 thi h2-h7 tat
+   23:	  0223	75 A0 81	mov	P2,#10000001b;cot p2.7
+   24:	  0226	12 02 8A	lcall	wait1s
+   25:
+   26:	  0229	75 B0 BF	mov	p3,#10111111b;hang cuoi 1 thi h2-h7 tat
+   27:	  022C	75 A0 41	mov	P2,#01000001b;cot p2.7
+   28:	  022F	12 02 8A	lcall	wait1s
+   29:
+   30:	  0232	75 B0 7F	mov	p3,#01111111b;hang cuoi 1 thi h2-h7 tat
+   31:	  0235	75 A0 3F	mov	P2,#00111111b;cot p2.7
+   32:	  0238	12 02 8A	lcall	wait1s
+   33:	  023B	DB D1		djnz	r3,loop1
+   34:	  023D	22		ret
+   35:	  023E	22		ret
+   36:
+   37:
+   38:	  023F			chuA:
+   39:	  023F	7C 14		mov	r4,#20
+   40:	  0241			loop2:
+   41:	  0241	75 B0 FE	mov	p3,#11111110b;hang cuoi 1 thi h2-h7 tat
+   42:	  0244	75 A0 18	mov	P2,#00011000b;cot p2.7
+   43:	  0247	12 02 8A	lcall	wait1s
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:
+   45:	  024A	75 B0 FD	mov	p3,#11111101b;hang cuoi 1 thi h2-h7 tat
+   46:	  024D	75 A0 24	mov	P2,#00100100b;cot p2.7
+   47:	  0250	12 02 8A	lcall	wait1s
+   48:
+   49:	  0253	75 B0 FB	mov	p3,#11111011b;hang cuoi 1 thi h2-h7 tat
+   50:	  0256	75 A0 42	mov	P2,#01000010b;cot p2.7
+   51:	  0259	12 02 8A	lcall	wait1s
+   52:
+   53:	  025C	75 B0 F7	mov	p3,#11110111b;hang cuoi 1 thi h2-h7 tat
+   54:	  025F	75 A0 FF	mov	P2,#11111111b;cot p2.7
+   55:	  0262	12 02 8A	lcall	wait1s
+   56:
+   57:	  0265	75 B0 0F	mov	p3,#00001111b;hang cuoi 1 thi h2-h7 tat
+   58:	  0268	75 A0 81	mov	P2,#10000001b;cot p2.7
+   59:	  026B	12 02 8A	lcall	wait1s
+   60:	  026E	DC D1		djnz	r4,loop2
+   61:	  0270	22		ret
+   62:	  0271	22		ret
+   63:
+   64:	  0272			chuT:
+   65:	  0272	7D 14		mov	r5,#20
+   66:
+   67:	  0274			loop3:
+   68:	  0274	75 B0 FC	mov	p3,#11111100b;hang cuoi 1 thi h2-h7 tat
+   69:	  0277	75 A0 FF	mov	P2,#11111111b;cot p2.7
+   70:	  027A	12 02 8A	lcall	wait1s
+   71:
+   72:	  027D	75 B0 03	mov	p3,#00000011b;hang cuoi 1 thi h2-h7 tat
+   73:	  0280	75 A0 18	mov	P2,#00011000b;cot p2.7
+   74:	  0283	12 02 8A	lcall	wait1s
+   75:
+   76:	  0286	DD EC		djnz r5,loop3
+   77:	  0288	22		ret
+   78:	  0289	22		ret
+   79:
+   80:
+   81:	  028A			wait1s:
+   82:	  028A	79 28		mov	r1,#40
+   83:	  028C			here1:
+   84:	  028C	7A 28		mov	r2,#40
+   85:
+   86:	  028E			here2:
+   87:	  028E	00		nop
+   88:	  028F	00		nop
+   89:	  0290	00		nop
+   90:	  0291	DA FB		djnz	r2,here2
+   91:	  0293	D9 F7		djnz	r1,here1
+   92:	  0295	22		ret
+   93:
+   94:
+   95:				end
+
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+CHUA				  CODE	    023F	  38
+CHUD				  CODE	    020C	  11
+CHUT				  CODE	    0272	  64
+CY				  BIT	      D7
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+HERE1				  CODE	    028C	  83
+HERE2				  CODE	    028E	  86
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+LOOP1				  CODE	    020E	  13
+LOOP2				  CODE	    0241	  40
+LOOP3				  CODE	    0274	  67
+MAIN				  CODE	    0200	   5
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+REN				  BIT	      9C
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 5
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WAIT1S				  CODE	    028A	  81
+WR				  BIT	      B6

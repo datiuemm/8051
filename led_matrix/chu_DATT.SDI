@@ -1,0 +1,95 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200h
+,,,
+0200,,main,main:
+0200,12 02 0C,,lcall   chuD
+0203,12 02 3F,,lcall   chuA
+0206,12 02 72,,lcall   chuT
+0209,02 02 00,,ljmp main
+,,,
+020C,,chuD,chuD:
+020C,7B 14,,mov     r3,#20
+020E,,loop1,loop1:
+020E,75 B0 FE,,mov     p3,#11111110b;hang cuoi 1 thi h2-h7 tat
+0211,75 A0 3F,,mov     P2,#00111111b;cot p2.7
+0214,12 02 8A,,lcall   wait1s
+,,,
+0217,75 B0 FD,,mov     p3,#11111101b;hang cuoi 1 thi h2-h7 tat
+021A,75 A0 41,,mov     P2,#01000001b;cot p2.7
+021D,12 02 8A,,lcall   wait1s
+,,,
+0220,75 B0 C3,,mov     p3,#11000011b;hang cuoi 1 thi h2-h7 tat
+0223,75 A0 81,,mov     P2,#10000001b;cot p2.7
+0226,12 02 8A,,lcall   wait1s
+,,,
+0229,75 B0 BF,,mov     p3,#10111111b;hang cuoi 1 thi h2-h7 tat
+022C,75 A0 41,,mov     P2,#01000001b;cot p2.7
+022F,12 02 8A,,lcall   wait1s
+,,,
+0232,75 B0 7F,,mov     p3,#01111111b;hang cuoi 1 thi h2-h7 tat
+0235,75 A0 3F,,mov     P2,#00111111b;cot p2.7
+0238,12 02 8A,,lcall   wait1s
+023B,DB D1,,djnz    r3,loop1
+023D,22,,ret
+023E,22,,ret
+,,,
+,,,
+023F,,chuA,chuA:
+023F,7C 14,,mov     r4,#20
+0241,,loop2,loop2:
+0241,75 B0 FE,,mov     p3,#11111110b;hang cuoi 1 thi h2-h7 tat
+0244,75 A0 18,,mov     P2,#00011000b;cot p2.7
+0247,12 02 8A,,lcall   wait1s
+,,,
+024A,75 B0 FD,,mov     p3,#11111101b;hang cuoi 1 thi h2-h7 tat
+024D,75 A0 24,,mov     P2,#00100100b;cot p2.7
+0250,12 02 8A,,lcall   wait1s
+,,,
+0253,75 B0 FB,,mov     p3,#11111011b;hang cuoi 1 thi h2-h7 tat
+0256,75 A0 42,,mov     P2,#01000010b;cot p2.7
+0259,12 02 8A,,lcall   wait1s
+,,,
+025C,75 B0 F7,,mov     p3,#11110111b;hang cuoi 1 thi h2-h7 tat
+025F,75 A0 FF,,mov     P2,#11111111b;cot p2.7
+0262,12 02 8A,,lcall   wait1s
+,,,
+0265,75 B0 0F,,mov     p3,#00001111b;hang cuoi 1 thi h2-h7 tat
+0268,75 A0 81,,mov     P2,#10000001b;cot p2.7
+026B,12 02 8A,,lcall   wait1s
+026E,DC D1,,djnz    r4,loop2
+0270,22,,ret
+0271,22,,ret
+,,,
+0272,,chuT,chuT:
+0272,7D 14,,mov     r5,#20
+,,,
+0274,,loop3,loop3:
+0274,75 B0 FC,,mov     p3,#11111100b;hang cuoi 1 thi h2-h7 tat
+0277,75 A0 FF,,mov     P2,#11111111b;cot p2.7
+027A,12 02 8A,,lcall   wait1s
+,,,
+027D,75 B0 03,,mov     p3,#00000011b;hang cuoi 1 thi h2-h7 tat
+0280,75 A0 18,,mov     P2,#00011000b;cot p2.7
+0283,12 02 8A,,lcall   wait1s
+,,,
+0286,DD EC,,djnz r5,loop3
+0288,22,,ret
+0289,22,,ret
+,,,
+,,,
+028A,,wait1s,wait1s:
+028A,79 28,,mov     r1,#40
+028C,,here1,here1:
+028C,7A 28,,mov     r2,#40
+,,,
+028E,,here2,here2:
+028E,00,,nop
+028F,00,,nop
+0290,00,,nop
+0291,DA FB,,djnz    r2,here2
+0293,D9 F7,,djnz    r1,here1
+0295,22,,ret
+,,,
+,,,
+000E,,,end

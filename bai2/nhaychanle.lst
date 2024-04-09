@@ -1,0 +1,201 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	..\..\vxl2\bai2\nhaychanle.ASM
+	Object File:	..\..\vxl2\bai2\nhaychanle.hex
+	List File:	..\..\vxl2\bai2\nhaychanle.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	ORG 	0000H
+    2:	  0000	02 02 00	LJMP	main
+    3:		N      0200	org 	200H
+    4:
+    5:	  0200			main:
+    6:	  0200	7B 02		mov	r3,#2
+    7:	  0202	7C 02		mov	r4,#2
+    8:
+    9:	  0204			loop1:
+   10:	  0204	75 A0 3F	MOV     P2,#00111111B;0
+   11:	  0207	12 02 52	LCALL   WAIT1S
+   12:
+   13:	  020A	75 A0 5B	MOV     P2,#01011011B;2
+   14:	  020D	12 02 52	LCALL   WAIT1S
+   15:
+   16:	  0210	75 A0 66	MOV     P2,#01100110B;4
+   17:	  0213	12 02 52	LCALL   WAIT1S
+   18:
+   19:	  0216	75 A0 7D	MOV     P2,#01111101B;6
+   20:	  0219	12 02 52	LCALL   WAIT1S
+   21:
+   22:	  021C	75 A0 FF	MOV     P2,#11111111B;8
+   23:	  021F	12 02 52	LCALL   WAIT1S
+   24:
+   25:	  0222	75 A0 00	MOV     P2,#00000000B;tat
+   26:	  0225	12 02 52	LCALL   WAIT1S
+   27:
+   28:	  0228	DB DA		djnz r3,loop1
+   29:
+   30:	  022A			loop2:
+   31:	  022A	75 A0 06	MOV     P2,#00000110B;1
+   32:	  022D	12 02 52	LCALL   WAIT1S
+   33:
+   34:	  0230	75 A0 4F	MOV     P2,#01001111B;3
+   35:	  0233	12 02 52	LCALL   WAIT1S
+   36:
+   37:	  0236	75 A0 6D	MOV     P2,#01101101B;5
+   38:	  0239	12 02 52	LCALL   WAIT1S
+   39:
+   40:	  023C	75 A0 07	MOV     P2,#00000111B;7
+   41:	  023F	12 02 52	LCALL   WAIT1S
+   42:
+   43:	  0242	75 A0 6F	MOV     P2,#01101111B;9
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:	  0245	12 02 52	LCALL   WAIT1S
+   45:
+   46:	  0248	75 A0 00	MOV     P2,#00000000B;tat
+   47:	  024B	12 02 52	LCALL   WAIT1S
+   48:
+   49:	  024E	DC DA		djnz	r4,loop2
+   50:
+   51:	  0250			loop3:
+   52:	  0250	80 FE		sjmp	loop3
+   53:
+   54:	  0252			wait1s:
+   55:	  0252	79 C8			mov	R1,#200
+   56:	  0254			here1:
+   57:	  0254	7A C8			mov	R2,#200
+   58:	  0256			here2:
+   59:	  0256	00			nop
+   60:	  0257	00			nop
+   61:	  0258	00			nop
+   62:	  0259	DA FB		djnz	r2,here2
+   63:	  025B	D9 F7		djnz 	r1,here1
+   64:	  025D	22		ret
+   65:				end
+
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+CY				  BIT	      D7
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+HERE1				  CODE	    0254	  56
+HERE2				  CODE	    0256	  58
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+LOOP1				  CODE	    0204	   9
+LOOP2				  CODE	    022A	  30
+LOOP3				  CODE	    0250	  51
+MAIN				  CODE	    0200	   5
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WAIT1S				  CODE	    0252	  54
+WR				  BIT	      B6

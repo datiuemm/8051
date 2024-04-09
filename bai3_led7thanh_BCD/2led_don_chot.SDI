@@ -1,0 +1,186 @@
+,,,org     000H
+0000,02 02 00,,ljmp    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,7B 02,,mov     r3,#2
+0202,7C 02,,mov     r4,#2
+0204,,loop1,loop1:
+0204,75 F0 40,,        mov     b,#40H
+0207,12 02 45,,        lcall   dsp
+020A,75 F0 79,,        mov     b,#79H
+020D,12 02 45,,        lcall   dsp
+0210,75 F0 24,,        mov     b,#24H
+0213,12 02 45,,        lcall   dsp
+0216,75 F0 30,,        mov     b,#30H
+0219,12 02 45,,        lcall   dsp
+021C,75 F0 19,,        mov     b,#19H
+021F,12 02 45,,        lcall   dsp
+0222,75 F0 12,,        mov     b,#12H
+0225,12 02 45,,        lcall   dsp
+0228,75 F0 02,,        mov     b,#02H
+022B,12 02 45,,        lcall   dsp
+022E,75 F0 78,,        mov     b,#78H
+0231,12 02 45,,        lcall   dsp
+0234,75 F0 00,,        mov     b,#00H
+0237,12 02 45,,        lcall    dsp
+023A,75 F0 10,,        mov     b,#10H
+023D,12 02 45,,        lcall   dsp
+0240,DB C2,,djnz    r3,loop1
+,,,
+0242,,loop2,loop2:
+0242,02 02 96,,ljmp    loop3
+,,,
+0245,,dsp,dsp:
+0245,12 03 45,,lcall hangchuc
+0248,74 40,,mov     a,#40H
+024A,12 03 50,,lcall   hangdv
+,,,
+024D,12 03 45,,lcall hangchuc
+0250,74 79,,mov     a,#79H
+0252,12 03 50,,lcall   hangdv
+,,,
+0255,12 03 45,,lcall hangchuc
+0258,74 24,,mov     a,#24H
+025A,12 03 50,,lcall   hangdv
+,,,
+025D,12 03 45,,lcall hangchuc
+0260,74 30,,mov     a,#30H
+0262,12 03 50,,lcall   hangdv
+,,,
+0265,12 03 45,,lcall hangchuc
+0268,74 19,,mov     a,#19H
+026A,12 03 50,,lcall   hangdv
+,,,
+026D,12 03 45,,lcall hangchuc
+0270,74 12,,mov     a,#12H
+0272,12 03 50,,lcall   hangdv
+,,,
+0275,12 03 45,,lcall hangchuc
+0278,74 02,,mov     a,#02H
+027A,12 03 50,,lcall   hangdv
+,,,
+027D,12 03 45,,lcall hangchuc
+0280,74 78,,mov     a,#78H
+0282,12 03 50,,lcall   hangdv
+,,,
+0285,12 03 45,,lcall hangchuc
+0288,74 00,,mov     a,#00H
+028A,12 03 50,,lcall   hangdv
+,,,
+028D,12 03 45,,lcall hangchuc
+0290,74 10,,mov     a,#10H
+0292,12 03 50,,lcall   hangdv
+0295,22,,ret
+,,,
+0296,,loop3,loop3:
+0296,75 F0 10,,        mov     b,#10H
+0299,12 02 F4,,        lcall   dsp1
+029C,75 F0 00,,        mov     b,#00H
+029F,12 02 F4,,        lcall   dsp1
+02A2,75 F0 78,,        mov     b,#78H
+02A5,12 02 F4,,        lcall   dsp1
+02A8,75 F0 02,,        mov     b,#02H
+02AB,12 02 F4,,        lcall   dsp1
+02AE,75 F0 12,,        mov     b,#12H
+02B1,12 02 F4,,        lcall   dsp1
+02B4,75 F0 19,,        mov     b,#19H
+02B7,12 02 F4,,        lcall   dsp1
+02BA,75 F0 30,,        mov     b,#30H
+02BD,12 02 F4,,        lcall   dsp1
+02C0,75 F0 24,,        mov     b,#24H
+02C3,12 02 F4,,        lcall   dsp1
+02C6,75 F0 79,,        mov     b,#79H
+02C9,12 02 F4,,        lcall    dsp1
+02CC,75 F0 40,,        mov     b,#40H
+02CF,12 02 F4,,        lcall   dsp1
+02D2,DC C2,,djnz    r4,loop3
+,,,
+02D4,,loop6,loop6:
+02D4,C2 A1,,clr     p2.1
+02D6,C2 A0,,clr     p2.0
+02D8,75 A0 03,,mov     p2,#3h
+02DB,75 80 FF,,mov     p0,#11111111b
+02DE,12 03 5A,,lcall   wait1s
+02E1,C2 A1,,clr     p2.1
+02E3,D2 A0,,setb    p2.0
+02E5,75 80 24,,mov     p0,#24H
+02E8,C2 A0,,clr     p2.0
+02EA,D2 A1,,setb    p2.1
+02EC,75 80 40,,mov     p0,#40H
+02EF,12 03 5A,,lcall   wait1s
+,,,
+,,,
+02F2,80 E0,,sjmp    loop6
+,,,
+02F4,,dsp1,dsp1:
+02F4,12 03 45,,lcall hangchuc
+02F7,74 10,,mov     a,#10H
+02F9,12 03 50,,lcall   hangdv
+,,,
+02FC,12 03 45,,lcall hangchuc
+02FF,74 00,,mov     a,#00H
+0301,12 03 50,,lcall   hangdv
+,,,
+0304,12 03 45,,lcall hangchuc
+0307,74 78,,mov     a,#78H
+0309,12 03 50,,lcall   hangdv
+,,,
+030C,12 03 45,,lcall hangchuc
+030F,74 02,,mov     a,#02H
+0311,12 03 50,,lcall   hangdv
+,,,
+0314,12 03 45,,lcall hangchuc
+0317,74 12,,mov     a,#12H
+0319,12 03 50,,lcall   hangdv
+,,,
+031C,12 03 45,,lcall hangchuc
+031F,74 19,,mov     a,#19H
+0321,12 03 50,,lcall   hangdv
+,,,
+0324,12 03 45,,lcall hangchuc
+0327,74 30,,mov     a,#30H
+0329,12 03 50,,lcall   hangdv
+,,,
+032C,12 03 45,,lcall hangchuc
+032F,74 24,,mov     a,#24H
+0331,12 03 50,,lcall   hangdv
+,,,
+0334,12 03 45,,lcall hangchuc
+0337,74 79,,mov     a,#79H
+0339,12 03 50,,lcall   hangdv
+,,,
+033C,12 03 45,,lcall hangchuc
+033F,74 40,,mov     a,#40H
+0341,12 03 50,,lcall   hangdv
+0344,22,,ret
+,,,
+,,,
+,,,
+0345,,hangchuc,hangchuc:
+0345,D2 A0,,setb    p2.0
+0347,C2 A1,,clr     p2.1
+0349,85 F0 80,,mov     p0,b
+034C,12 03 5A,,lcall   wait1s
+034F,22,,ret
+,,,
+0350,,hangdv,hangdv:
+0350,C2 A0,,clr     p2.0
+0352,D2 A1,,setb    p2.1
+0354,F5 80,,mov     p0,a
+0356,12 03 5A,,lcall   wait1s
+0359,22,,ret
+,,,
+035A,,wait1s,wait1s:
+035A,79 64,,        mov R1,#100
+035C,,here1,here1:
+035C,7A 64,,        mov R2,#100
+035E,,here2,here2:
+035E,00,,        nop
+035F,00,,        nop
+0360,00,,        nop
+0361,DA FB,,        djnz R2,here2
+0363,D9 F7,,        djnz R1,here1
+0365,22,,        ret
+000E,,,end
+,,,

@@ -1,0 +1,57 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,75 B0 00,,mov     p3,#00H;tat led
+0203,,main1,main1:
+0203,E5 A0,,mov     a,p2
+0205,54 07,,anl     a,#00000111b
+0207,B4 07 02,,cjne    a,#00000111b,checky
+020A,80 F7,,sjmp    main1
+,,,
+020C,,checky,checky:
+020C,B4 07 05,,cjne    a,#00000111b,checky1
+020F,75 B0 01,,mov     p3,#00000001B
+0212,80 EF,,sjmp    main1
+,,,
+0214,,checky1,checky1:
+0214,B4 06 05,,cjne    a,#00000110b,checky2
+0217,75 B0 02,,mov     p3,#00000010B
+021A,80 E7,,sjmp    main1
+,,,
+021C,,checky2,checky2:
+021C,B4 05 05,,cjne    a,#00000101b,checky3
+021F,75 B0 04,,mov     p3,#00000100B
+0222,80 DF,,sjmp    main1
+,,,
+0224,,checky3,checky3:
+0224,B4 04 05,,cjne    a,#00000100b,checky4
+0227,75 B0 08,,mov     p3,#00001000B
+022A,80 D7,,sjmp    main1
+,,,
+022C,,checky4,checky4:
+022C,B4 03 05,,cjne    a,#00000011b,checky5
+022F,75 B0 10,,mov     p3,#00010000B
+0232,80 CF,,sjmp    main1
+,,,
+0234,,checky5,checky5:
+0234,B4 02 05,,cjne    a,#00000010b,checky6
+0237,75 B0 20,,mov     p3,#00100000B
+023A,80 C7,,sjmp    main1
+,,,
+023C,,checky6,checky6:
+023C,B4 01 05,,cjne    a,#00000001b,checky7
+023F,75 B0 40,,mov     p3,#01000000B
+0242,80 BF,,sjmp    main1
+,,,
+0244,,checky7,checky7:
+0244,B4 00 05,,cjne    a,#00000000b,finale
+0247,75 B0 80,,mov     p3,#10000000B
+024A,80 B7,,sjmp    main1
+,,,
+,,,
+024C,,finale,finale:
+024C,80 B5,,sjmp    main1
+,,,
+000E,,,end

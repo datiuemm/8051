@@ -1,0 +1,65 @@
+,,,ORG     0000H
+0000,02 02 00,,LJMP    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,7B 02,,mov     r3,#2
+0202,7C 02,,mov     r4,#2
+,,,
+0204,,loop1,loop1:
+0204,75 A0 3F,,MOV     P2,#00111111B;0
+0207,12 02 52,,LCALL   WAIT1S
+,,,
+020A,75 A0 5B,,MOV     P2,#01011011B;2
+020D,12 02 52,,LCALL   WAIT1S
+,,,
+0210,75 A0 66,,MOV     P2,#01100110B;4
+0213,12 02 52,,LCALL   WAIT1S
+,,,
+0216,75 A0 7D,,MOV     P2,#01111101B;6
+0219,12 02 52,,LCALL   WAIT1S
+,,,
+021C,75 A0 FF,,MOV     P2,#11111111B;8
+021F,12 02 52,,LCALL   WAIT1S
+,,,
+0222,75 A0 00,,MOV     P2,#00000000B;tat
+0225,12 02 52,,LCALL   WAIT1S
+,,,
+0228,DB DA,,djnz r3,loop1
+,,,
+022A,,loop2,loop2:
+022A,75 A0 06,,MOV     P2,#00000110B;1
+022D,12 02 52,,LCALL   WAIT1S
+,,,
+0230,75 A0 4F,,MOV     P2,#01001111B;3
+0233,12 02 52,,LCALL   WAIT1S
+,,,
+0236,75 A0 6D,,MOV     P2,#01101101B;5
+0239,12 02 52,,LCALL   WAIT1S
+,,,
+023C,75 A0 07,,MOV     P2,#00000111B;7
+023F,12 02 52,,LCALL   WAIT1S
+,,,
+0242,75 A0 6F,,MOV     P2,#01101111B;9
+0245,12 02 52,,LCALL   WAIT1S
+,,,
+0248,75 A0 00,,MOV     P2,#00000000B;tat
+024B,12 02 52,,LCALL   WAIT1S
+,,,
+024E,DC DA,,djnz    r4,loop2
+,,,
+0250,,loop3,loop3:
+0250,80 FE,,sjmp    loop3
+,,,
+0252,,wait1s,wait1s:
+0252,79 C8,,        mov     R1,#200
+0254,,here1,here1:
+0254,7A C8,,        mov     R2,#200
+0256,,here2,here2:
+0256,00,,        nop
+0257,00,,        nop
+0258,00,,        nop
+0259,DA FB,,djnz    r2,here2
+025B,D9 F7,,djnz    r1,here1
+025D,22,,ret
+000E,,,end

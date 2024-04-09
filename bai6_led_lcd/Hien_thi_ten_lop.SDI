@@ -1,0 +1,165 @@
+,,,org     0000h
+0000,02 02 00,,ljmp    main
+,,,org     200h
+,,,
+0200,,main,main:
+0200,74 38,,mov     a,#38h
+0202,12 02 CA,,lcall   command
+0205,12 02 F4,,lcall   delay
+0208,74 0E,,mov     a,#0Eh
+020A,12 02 CA,,lcall   command
+020D,12 02 F4,,lcall   delay
+,,,
+0210,,DSP_D16_DINH_TRONG_DAT,DSP_D16_DINH_TRONG_DAT:
+0210,74 01,,mov     a,#01h
+0212,12 02 CA,,lcall   command
+0215,12 02 F4,,lcall   delay
+0218,74 80,,mov     a,#80h
+021A,12 02 CA,,lcall   command
+021D,12 02 F4,,lcall   delay
+,,,
+0220,74 20,,mov     a,#" "
+0222,12 02 BC,,lcall   ctt
+,,,
+0225,74 20,,mov     a,#" "
+0227,12 02 BC,,lcall   ctt
+,,,
+022A,74 44,,mov     a,#"D"
+022C,12 02 BC,,lcall   ctt
+,,,
+022F,74 31,,mov     a,#"1"
+0231,12 02 BC,,lcall   ctt
+,,,
+0234,74 36,,mov     a,#"6"
+0236,12 02 BC,,lcall   ctt
+,,,
+0239,74 54,,mov     a,#"T"
+023B,12 02 BC,,lcall   ctt
+,,,
+023E,74 48,,mov     a,#"H"
+0240,12 02 BC,,lcall   ctt
+,,,
+0243,74 44,,mov     a,#"D"
+0245,12 02 BC,,lcall   ctt
+,,,
+0248,74 4B,,mov     a,#"K"
+024A,12 02 BC,,lcall   ctt
+,,,
+024D,74 26,,mov     a,#"&"
+024F,12 02 BC,,lcall   ctt
+,,,
+0252,74 54,,mov     a,#"T"
+0254,12 02 BC,,lcall   ctt
+,,,
+0257,74 44,,mov     a,#"D"
+0259,12 02 BC,,lcall   ctt
+,,,
+025C,74 48,,mov     a,#"H"
+025E,12 02 BC,,lcall   ctt
+,,,
+0261,74 31,,mov     a,#"1"
+0263,12 02 BC,,lcall   ctt
+,,,
+0266,74 C0,,mov     a,#0C0H
+0268,12 02 CA,,lcall   command
+026B,12 02 F4,,lcall   delay
+,,,
+026E,74 20,,mov     a,#" "
+0270,12 02 BC,,lcall   ctt
+,,,
+0273,74 44,,mov     a,#"D"
+0275,12 02 BC,,lcall   ctt
+,,,
+0278,74 49,,mov     a,#"I"
+027A,12 02 BC,,lcall   ctt
+,,,
+027D,74 4E,,mov     a,#"N"
+027F,12 02 BC,,lcall   ctt
+,,,
+0282,74 48,,mov     a,#"H"
+0284,12 02 BC,,lcall   ctt
+,,,
+0287,74 20,,mov     a,#" "
+0289,12 02 BC,,lcall   ctt
+,,,
+028C,74 54,,mov     a,#"T"
+028E,12 02 BC,,lcall   ctt
+,,,
+0291,74 52,,mov     a,#"R"
+0293,12 02 BC,,lcall   ctt
+,,,
+0296,74 4F,,mov     a,#"O"
+0298,12 02 BC,,lcall   ctt
+,,,
+029B,74 4E,,mov     a,#"N"
+029D,12 02 BC,,lcall   ctt
+,,,
+02A0,74 47,,mov     a,#"G"
+02A2,12 02 BC,,lcall   ctt
+,,,
+02A5,74 20,,mov     a,#" "
+02A7,12 02 BC,,lcall   ctt
+,,,
+02AA,74 44,,mov     a,#"D"
+02AC,12 02 BC,,lcall   ctt
+,,,
+02AF,74 41,,mov     a,#"A"
+02B1,12 02 BC,,lcall   ctt
+,,,
+02B4,74 54,,mov     a,#"T"
+02B6,12 02 BC,,lcall   ctt
+,,,
+02B9,02 02 10,,ljmp    DSP_D16_DINH_TRONG_DAT
+,,,
+02BC,,ctt,ctt:
+02BC,12 02 D8,,lcall   display
+02BF,12 02 F4,,lcall   delay
+02C2,74 06,,mov     a,#06h
+02C4,12 02 CA,,lcall   command
+02C7,12 02 F4,,lcall   delay
+,,,
+02CA,,command,command:
+02CA,12 02 E6,,lcall   ready
+02CD,F5 A0,,mov     p2,a
+02CF,C2 B0,,clr     p3.0
+02D1,C2 B1,,clr     p3.1
+02D3,D2 B2,,setb    p3.2
+02D5,C2 B2,,clr     p3.2
+02D7,22,,ret
+,,,
+02D8,,display,display:
+02D8,12 02 E6,,lcall   ready
+02DB,F5 A0,,mov     p2,a
+02DD,D2 B0,,setb    p3.0
+02DF,C2 B1,,clr     p3.1
+02E1,D2 B2,,setb    p3.2
+02E3,C2 B2,,clr     p3.2
+02E5,22,,ret
+,,,
+02E6,,ready,ready:
+02E6,D2 A7,,setb    p2.7
+02E8,C2 B0,,clr     p3.0
+02EA,D2 B1,,setb    p3.1
+,,,
+02EC,,back,back:
+02EC,C2 B2,,clr     p3.2
+02EE,D2 B2,,setb    p3.2
+02F0,20 A7 F9,,jb      p2.7,back
+02F3,22,,ret
+,,,
+02F4,,delay,delay:
+02F4,79 64,,mov     r1,#100
+,,,
+02F6,,here1,here1:
+02F6,7A 64,,mov     r2,#100
+,,,
+02F8,,here2,here2:
+02F8,00,,nop
+02F9,00,,nop
+02FA,00,,nop
+02FB,DA FB,,djnz    r2,here2
+02FD,D9 F7,,djnz    r1,here1
+02FF,22,,ret
+,,,
+000E,,,end
+,,,

@@ -1,0 +1,318 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	..\..\vxl2\bai6_led_lcd\Hien_thi_ten_lop.ASM
+	Object File:	..\..\vxl2\bai6_led_lcd\Hien_thi_ten_lop.hex
+	List File:	..\..\vxl2\bai6_led_lcd\Hien_thi_ten_lop.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:		N      0000	org	0000h
+    2:	  0000	02 02 00	ljmp	main
+    3:		N      0200	org 	200h
+    4:
+    5:	  0200			main:
+    6:	  0200	74 38		mov	a,#38h
+    7:	  0202	12 02 CA	lcall	command
+    8:	  0205	12 02 F4	lcall	delay
+    9:	  0208	74 0E		mov	a,#0Eh
+   10:	  020A	12 02 CA	lcall	command
+   11:	  020D	12 02 F4	lcall	delay
+   12:
+   13:	  0210			DSP_D16_DINH_TRONG_DAT:
+   14:	  0210	74 01		mov	a,#01h
+   15:	  0212	12 02 CA	lcall	command
+   16:	  0215	12 02 F4	lcall	delay
+   17:	  0218	74 80		mov	a,#80h
+   18:	  021A	12 02 CA	lcall	command
+   19:	  021D	12 02 F4	lcall	delay
+   20:
+   21:	  0220	74 20		mov	a,#" "
+   22:	  0222	12 02 BC	lcall	ctt
+   23:
+   24:	  0225	74 20		mov	a,#" "
+   25:	  0227	12 02 BC	lcall	ctt
+   26:
+   27:	  022A	74 44		mov	a,#"D"
+   28:	  022C	12 02 BC	lcall	ctt
+   29:
+   30:	  022F	74 31		mov	a,#"1"
+   31:	  0231	12 02 BC	lcall	ctt
+   32:
+   33:	  0234	74 36		mov	a,#"6"
+   34:	  0236	12 02 BC	lcall	ctt
+   35:
+   36:	  0239	74 54		mov	a,#"T"
+   37:	  023B	12 02 BC	lcall	ctt
+   38:
+   39:	  023E	74 48		mov	a,#"H"
+   40:	  0240	12 02 BC	lcall	ctt
+   41:
+   42:	  0243	74 44		mov	a,#"D"
+   43:	  0245	12 02 BC	lcall	ctt
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:
+   45:	  0248	74 4B		mov	a,#"K"
+   46:	  024A	12 02 BC	lcall	ctt
+   47:
+   48:	  024D	74 26		mov	a,#"&"
+   49:	  024F	12 02 BC	lcall	ctt
+   50:
+   51:	  0252	74 54		mov	a,#"T"
+   52:	  0254	12 02 BC	lcall	ctt
+   53:
+   54:	  0257	74 44		mov	a,#"D"
+   55:	  0259	12 02 BC	lcall	ctt
+   56:
+   57:	  025C	74 48		mov	a,#"H"
+   58:	  025E	12 02 BC	lcall	ctt
+   59:
+   60:	  0261	74 31		mov	a,#"1"
+   61:	  0263	12 02 BC	lcall	ctt
+   62:
+   63:	  0266	74 C0		mov	a,#0C0H
+   64:	  0268	12 02 CA	lcall	command
+   65:	  026B	12 02 F4	lcall	delay
+   66:
+   67:	  026E	74 20		mov	a,#" "
+   68:	  0270	12 02 BC	lcall	ctt
+   69:
+   70:	  0273	74 44		mov	a,#"D"
+   71:	  0275	12 02 BC	lcall	ctt
+   72:
+   73:	  0278	74 49		mov	a,#"I"
+   74:	  027A	12 02 BC	lcall	ctt
+   75:
+   76:	  027D	74 4E		mov	a,#"N"
+   77:	  027F	12 02 BC	lcall	ctt
+   78:
+   79:	  0282	74 48		mov	a,#"H"
+   80:	  0284	12 02 BC	lcall	ctt
+   81:
+   82:	  0287	74 20		mov	a,#" "
+   83:	  0289	12 02 BC	lcall	ctt
+   84:
+   85:	  028C	74 54		mov	a,#"T"
+   86:	  028E	12 02 BC	lcall	ctt
+   87:
+   88:	  0291	74 52		mov	a,#"R"
+   89:	  0293	12 02 BC	lcall	ctt
+   90:
+   91:	  0296	74 4F		mov	a,#"O"
+   92:	  0298	12 02 BC	lcall	ctt
+   93:
+   94:	  029B	74 4E		mov	a,#"N"
+   95:	  029D	12 02 BC	lcall	ctt
+   96:
+   97:	  02A0	74 47		mov	a,#"G"
+   98:	  02A2	12 02 BC	lcall	ctt
+   99:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+ Line  I  Addr  Code            Source
+
+  100:	  02A5	74 20		mov	a,#" "
+  101:	  02A7	12 02 BC	lcall	ctt
+  102:
+  103:	  02AA	74 44		mov	a,#"D"
+  104:	  02AC	12 02 BC	lcall	ctt
+  105:
+  106:	  02AF	74 41		mov	a,#"A"
+  107:	  02B1	12 02 BC	lcall	ctt
+  108:
+  109:	  02B4	74 54		mov	a,#"T"
+  110:	  02B6	12 02 BC	lcall	ctt
+  111:
+  112:	  02B9	02 02 10	ljmp 	DSP_D16_DINH_TRONG_DAT
+  113:
+  114:	  02BC			ctt:
+  115:	  02BC	12 02 D8	lcall	display
+  116:	  02BF	12 02 F4	lcall	delay
+  117:	  02C2	74 06		mov	a,#06h
+  118:	  02C4	12 02 CA	lcall	command
+  119:	  02C7	12 02 F4	lcall	delay
+  120:
+  121:	  02CA			command:
+  122:	  02CA	12 02 E6	lcall	ready
+  123:	  02CD	F5 A0		mov	p2,a
+  124:	  02CF	C2 B0		clr	p3.0
+  125:	  02D1	C2 B1		clr	p3.1
+  126:	  02D3	D2 B2		setb	p3.2
+  127:	  02D5	C2 B2		clr	p3.2
+  128:	  02D7	22		ret
+  129:
+  130:	  02D8			display:
+  131:	  02D8	12 02 E6	lcall	ready
+  132:	  02DB	F5 A0		mov	p2,a
+  133:	  02DD	D2 B0		setb	p3.0
+  134:	  02DF	C2 B1		clr	p3.1
+  135:	  02E1	D2 B2		setb	p3.2
+  136:	  02E3	C2 B2		clr	p3.2
+  137:	  02E5	22		ret
+  138:
+  139:	  02E6			ready:
+  140:	  02E6	D2 A7		setb	p2.7
+  141:	  02E8	C2 B0		clr	p3.0
+  142:	  02EA	D2 B1		setb	p3.1
+  143:
+  144:	  02EC			back:
+  145:	  02EC	C2 B2		clr	p3.2
+  146:	  02EE	D2 B2		setb	p3.2
+  147:	  02F0	20 A7 F9	jb	p2.7,back
+  148:	  02F3	22		ret
+  149:
+  150:	  02F4			delay:
+  151:	  02F4	79 64		mov	r1,#100
+  152:
+  153:	  02F6			here1:
+  154:	  02F6	7A 64		mov	r2,#100
+  155:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+ Line  I  Addr  Code            Source
+
+  156:	  02F8			here2:
+  157:	  02F8	00		nop
+  158:	  02F9	00		nop
+  159:	  02FA	00		nop
+  160:	  02FB	DA FB		djnz	r2,here2
+  161:	  02FD	D9 F7		djnz	r1,here1
+  162:	  02FF	22		ret
+  163:
+  164:				end
+  165:
+
+
+
+
+
+                     register banks used:  ---
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 5
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+AC				  BIT	      D6
+ACC				  DATA	      E0
+B				  DATA	      F0
+BACK				  CODE	    02EC	 144
+COMMAND				  CODE	    02CA	 121
+CTT				  CODE	    02BC	 114
+CY				  BIT	      D7
+DELAY				  CODE	    02F4	 150
+DISPLAY				  CODE	    02D8	 130
+DPH				  DATA	      83
+DPL				  DATA	      82
+DSP_D16_DINH_TRONG_DAT		  CODE	    0210	  13
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+HERE1				  CODE	    02F6	 153
+HERE2				  CODE	    02F8	 156
+IE				  DATA	      A8
+IE0				  BIT	      89
+IE1				  BIT	      8B
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+MAIN				  CODE	    0200	   5
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+READY				  CODE	    02E6	 139
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 6
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6

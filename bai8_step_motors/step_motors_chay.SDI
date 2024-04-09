@@ -1,0 +1,30 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200h
+,,,
+0200,,main,main:
+0200,75 A0 01,,mov     P2,#00000001B
+0203,12 02 1B,,lcall   wait1s
+0206,75 A0 02,,mov     P2,#00000010b
+0209,12 02 1B,,lcall   wait1s
+020C,75 A0 04,,mov     P2,#00000100b
+020F,12 02 1B,,lcall   wait1s
+0212,75 A0 08,,mov     P2,#00001000b
+0215,12 02 1B,,lcall   wait1s
+0218,02 02 00,,ljmp    main
+,,,
+,,,
+021B,,wait1s,wait1s:
+021B,79 C8,,        mov     R1,#200
+021D,,here1,here1:
+021D,7A C8,,        mov     R2,#200
+021F,,here2,here2:
+021F,00,,        nop
+0220,00,,        nop
+0221,00,,        nop
+0222,DA FB,,djnz    r2,here2
+0224,D9 F7,,djnz    r1,here1
+,,,
+0226,22,,ret
+,,,
+000E,,,end

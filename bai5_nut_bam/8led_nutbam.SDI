@@ -1,0 +1,71 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,75 B0 00,,mov     p3,#00H;tat led
+0203,,main1,main1:
+0203,E5 A0,,mov     a,p2
+0205,54 FF,,anl     a,#11111111b
+0207,B4 FF 04,,cjne    a,#11111111b,checky
+020A,80 F7,,sjmp    main1
+020C,AD C8,,mov     r5,200
+,,,
+020E,,checky,checky:
+020E,B4 FE 32,,cjne    a,#11111110b,checky1
+0211,75 B0 01,,mov     p3,#00000001B
+0214,12 02 7A,,lcall   wait1s
+0217,75 B0 02,,mov     p3,#00000010B
+021A,12 02 7A,,lcall   wait1s
+021D,75 B0 04,,mov     p3,#00000100B
+0220,12 02 7A,,lcall   wait1s
+0223,75 B0 08,,mov     p3,#00001000B
+0226,12 02 7A,,lcall   wait1s
+0229,75 B0 10,,mov     p3,#00010000B
+022C,12 02 7A,,lcall   wait1s
+022F,75 B0 20,,mov     p3,#00100000B
+0232,12 02 7A,,lcall   wait1s
+0235,75 B0 40,,mov     p3,#01000000B
+0238,12 02 7A,,lcall   wait1s
+023B,75 B0 80,,mov     p3,#10000000B
+023E,12 02 7A,,lcall   wait1s
+0241,80 CB,,sjmp    checky
+,,,
+0243,,checky1,checky1:
+0243,B4 FD 32,,cjne    a,#11111101b,finale
+0246,75 B0 80,,mov     p3,#10000000B
+0249,12 02 7A,,lcall   wait1s
+024C,75 B0 40,,mov     p3,#01000000B
+024F,12 02 7A,,lcall   wait1s
+0252,75 B0 20,,mov     p3,#00100000B
+0255,12 02 7A,,lcall   wait1s
+0258,75 B0 10,,mov     p3,#00010000B
+025B,12 02 7A,,lcall   wait1s
+025E,75 B0 08,,mov     p3,#00001000B
+0261,12 02 7A,,lcall   wait1s
+0264,75 B0 04,,mov     p3,#00000100B
+0267,12 02 7A,,lcall   wait1s
+026A,75 B0 02,,mov     p3,#00000010B
+026D,12 02 7A,,lcall   wait1s
+0270,75 B0 01,,mov     p3,#00000001B
+0273,12 02 7A,,lcall   wait1s
+0276,80 8B,,sjmp    main1
+,,,
+0278,,finale,finale:
+0278,80 89,,sjmp    main1
+,,,
+027A,,wait1s,wait1s:
+027A,79 C8,,mov     r1,#200
+,,,
+027C,,here1,here1:
+027C,7A C8,,mov     r2,#200
+,,,
+027E,,here2,here2:
+027E,00,,nop
+027F,00,,nop
+0280,00,,nop
+0281,DA FB,,djnz    r2,here2
+0283,D9 F7,,djnz    r1,here1
+0285,22,,ret
+,,,
+000E,,,end

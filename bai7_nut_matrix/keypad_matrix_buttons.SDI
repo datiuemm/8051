@@ -1,0 +1,55 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,75 B0 77,,mov     p3,#01110111B
+0203,E5 B0,,mov     a,p3
+0205,54 1F,,anl     a,#00011111b
+0207,B4 76 05,,cjne    a,#01110110b,check_11
+020A,75 A0 03,,mov     p2,#00000011b
+020D,80 F1,,jmp     main
+,,,
+020F,,check_11,check_11:
+020F,B4 75 06,,cjne    a,#01110101b, check_12
+0212,75 A0 02,,mov     p2,#00000010b
+0215,02 02 00,,ljmp    main
+,,,
+0218,,check_12,check_12:
+0218,B4 13 05,,cjne    a,#00010011b,check_2
+,,,
+021B,75 A0 01,,mov     p2,#00000001b
+021E,80 E0,,jmp     main
+,,,
+,,,
+0220,,check_2,check_2:
+0220,75 B0 6F,,mov     p3,#01101111B
+0223,E5 B0,,mov     a,p3
+0225,54 1F,,anl     a,#00011111b
+0227,B4 0E 05,,cjne    a,#00001110b, check_21
+022A,75 A0 06,,mov     p2,#00000110b
+022D,80 D1,,jmp     main
+,,,
+022F,,check_21,check_21:
+022F,B4 0D 05,,cjne    a,#00001101b, check_22
+0232,75 A0 05,,mov     p2,#00000101b
+0235,80 C9,,jmp     main
+,,,
+0237,,check_22,check_22:
+0237,B4 0B 05,,cjne    a,#00001011b, check_3
+023A,75 A0 04,,mov     p2,#00000100b
+023D,80 C1,,jmp     main
+,,,
+023F,,check_3,check_3:
+023F,75 B0 5F,,mov     p3,#01011111B
+0242,E5 B0,,mov     a,p3
+0244,54 1F,,anl     a,#00011111b
+0246,B4 5E 05,,cjne    a,#01011110b, end2
+0249,75 A0 07,,mov     p2,#00000111b
+024C,80 B2,,jmp     main
+,,,
+,,,
+,,,
+024E,,end2,end2:
+024E,80 B0,,jmp     main
+000E,,,end

@@ -1,0 +1,71 @@
+0000,02 02 00,,LJMP    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,7B 03,,mov     R3,#3
+0202,,loop1,loop1:
+0202,75 A0 40,,mov     P2,#01000000B;0
+0205,12 02 5A,,lcall   dao
+0208,12 02 62,,lcall   wait1s
+,,,
+020B,75 A0 79,,mov     P2,#01111001B;1
+020E,12 02 5A,,lcall   dao
+0211,12 02 62,,lcall   wait1s
+,,,
+0214,75 A0 24,,mov     P2,#00100100B;2
+0217,12 02 5A,,lcall   dao
+021A,12 02 62,,lcall   wait1s
+,,,
+021D,75 A0 30,,mov     P2,#00110000B;3
+0220,12 02 5A,,lcall   dao
+0223,12 02 62,,lcall   wait1s
+,,,
+0226,75 A0 19,,mov     P2,#00011001B;4
+0229,12 02 5A,,lcall   dao
+022C,12 02 62,,lcall   wait1s
+,,,
+022F,75 A0 12,,mov     P2,#00010010B;5
+0232,12 02 5A,,lcall   dao
+0235,12 02 62,,lcall   wait1s
+,,,
+0238,75 A0 02,,mov     P2,#00000010B
+023B,12 02 5A,,lcall   dao
+023E,12 02 62,,lcall   wait1s
+,,,
+0241,75 A0 78,,mov     P2,#01111000B
+0244,12 02 5A,,lcall   dao
+0247,12 02 62,,lcall   wait1s
+,,,
+024A,75 A0 00,,mov     P2,#00000000B
+024D,12 02 5A,,lcall   dao
+0250,12 02 62,,lcall   wait1s
+,,,
+,,,
+0253,DB AD,,djnz    r3,loop1
+,,,
+,,,
+0255,,loop2,loop2:
+0255,80 FE,,sjmp    loop2
+,,,
+0257,02 02 00,,ljmp    main
+,,,
+025A,,dao,dao:
+025A,74 00,,mov     A,#00000000B
+025C,E5 A0,,mov     A,P2
+025E,F4,,CPL     A
+025F,F5 A0,,mov     P2,A
+0261,22,,ret
+,,,
+,,,
+0262,,wait1s,wait1s:
+0262,79 C8,,        mov     R1,#200
+0264,,here1,here1:
+0264,7A C8,,        mov     R2,#200
+0266,,here2,here2:
+0266,00,,        nop
+0267,00,,        nop
+0268,00,,        nop
+0269,DA FB,,djnz    r2,here2
+026B,D9 F7,,djnz    r1,here1
+026D,22,,ret
+000E,,,end

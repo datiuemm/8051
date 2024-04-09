@@ -1,0 +1,124 @@
+,,,org     000H
+0000,02 02 00,,ljmp    main
+,,,org     200H
+,,,
+0200,,main,main:
+0200,74 40,,        mov     a,#40H
+0202,12 02 35,,        lcall   dsp
+0205,74 79,,        mov     a,#79H
+0207,12 02 35,,        lcall   dsp
+020A,74 24,,        mov     a,#24H
+020C,12 02 35,,        lcall   dsp
+020F,74 30,,        mov     a,#30H
+0211,12 02 35,,        lcall   dsp
+0214,74 19,,        mov     a,#19H
+0216,12 02 35,,        lcall   dsp
+0219,74 12,,        mov     a,#12H
+021B,12 02 35,,        lcall   dsp
+021E,74 02,,        mov     a,#02H
+0220,12 02 35,,        lcall   dsp
+0223,74 78,,        mov     a,#78H
+0225,12 02 35,,        lcall   dsp
+0228,74 00,,        mov     a,#00H
+022A,12 02 35,,        lcall    dsp
+022D,74 10,,        mov     a,#10H
+022F,12 02 35,,        lcall   dsp
+,,,
+0232,02 02 00,,        ljmp main
+,,,
+0235,,dsp,dsp:
+0235,D2 B1,,        setb    P3.1
+0237,C2 B2,,        clr     P3.2
+0239,F5 A0,,        mov     p2,a
+023B,12 02 F4,,        lcall   wait1s
+023E,C2 B1,,        clr     p3.1
+0240,D2 B2,,        setb    p3.2
+0242,75 A0 40,,        mov     P2,#40h
+0245,12 02 F4,,        lcall   wait1s
+0248,D2 B1,,        setb    P3.1
+024A,C2 B2,,        clr     P3.2
+024C,F5 A0,,        mov     p2,a
+024E,12 02 F4,,        lcall   wait1s
+0251,C2 B1,,        clr     p3.1
+0253,D2 B2,,        setb    p3.2
+0255,75 A0 79,,        mov     P2,#79h
+0258,12 02 F4,,        lcall   wait1s
+025B,D2 B1,,        setb    P3.1
+025D,C2 B2,,        clr     P3.2
+025F,F5 A0,,        mov     p2,a
+0261,12 02 F4,,        lcall   wait1s
+0264,C2 B1,,        clr      p3.1
+0266,D2 B2,,        setb    p3.2
+0268,75 A0 24,,        mov     P2,#24h
+026B,12 02 F4,,        lcall    wait1s
+026E,D2 B1,,        setb     P3.1
+0270,C2 B2,,        clr     P3.2
+0272,F5 A0,,        mov      p2,a
+0274,12 02 F4,,        lcall    wait1s
+0277,C2 B1,,        clr     p3.1
+0279,D2 B2,,        setb    p3.2
+027B,75 A0 30,,        mov     P2,#30h
+027E,12 02 F4,,        lcall   wait1s
+0281,D2 B1,,        setb    P3.1
+0283,C2 B2,,        clr     P3.2
+0285,F5 A0,,        mov     p2,a
+0287,12 02 F4,,        lcall    wait1s
+028A,C2 B1,,        clr      p3.1
+028C,D2 B2,,        setb    p3.2
+028E,75 A0 19,,        mov      P2,#19h
+0291,12 02 F4,,        lcall   wait1s
+0294,D2 B1,,        setb    P3.1
+0296,C2 B2,,        clr     P3.2
+0298,F5 A0,,        mov      p2,a
+029A,12 02 F4,,        lcall    wait1s
+029D,C2 B1,,        clr      p3.1
+029F,D2 B2,,        setb    p3.2
+02A1,75 A0 12,,        mov      P2,#12h
+02A4,12 02 F4,,        lcall    wait1s
+02A7,D2 B1,,        setb     P3.1
+02A9,C2 B2,,        clr      P3.2
+02AB,F5 A0,,        mov     p2,a
+02AD,12 02 F4,,        lcall    wait1s
+02B0,C2 B1,,        clr     p3.1
+02B2,D2 B2,,        setb    p3.2
+02B4,75 A0 02,,        mov     P2,#02h
+02B7,12 02 F4,,        lcall    wait1s
+02BA,D2 B1,,        setb     P3.1
+02BC,C2 B2,,        clr      P3.2
+02BE,F5 A0,,        mov      p2,a
+02C0,12 02 F4,,        lcall    wait1s
+02C3,C2 B1,,        clr      p3.1
+02C5,D2 B2,,        setb    p3.2
+02C7,75 A0 78,,        mov     P2,#78h
+02CA,12 02 F4,,        lcall   wait1s
+02CD,D2 B1,,        setb     P3.1
+02CF,C2 B2,,        clr      P3.2
+02D1,F5 A0,,        mov     p2,a
+02D3,12 02 F4,,        lcall   wait1s
+02D6,C2 B1,,        clr      p3.1
+02D8,D2 B2,,        setb    p3.2
+02DA,75 A0 00,,        mov     P2,#00h
+02DD,12 02 F4,,        lcall    wait1s
+02E0,D2 B1,,        setb     P3.1
+02E2,C2 B2,,        clr     P3.2
+02E4,F5 A0,,        mov     p2,a
+02E6,12 02 F4,,        lcall   wait1s
+02E9,C2 B1,,        clr      p3.1
+02EB,D2 B2,,        setb    p3.2
+02ED,75 A0 10,,        mov      P2,#10h
+02F0,12 02 F4,,        lcall    wait1s
+,,,
+,,,
+02F3,22,,ret
+02F4,,wait1s,wait1s:
+02F4,79 64,,        mov R1,#100
+02F6,,here1,here1:
+02F6,7A 64,,        mov R2,#100
+02F8,,here2,here2:
+02F8,00,,        nop
+02F9,00,,        nop
+02FA,00,,        nop
+02FB,DA FB,,        djnz R2,here2
+02FD,D9 F7,,        djnz R1,here1
+02FF,22,,        ret
+000E,,,end

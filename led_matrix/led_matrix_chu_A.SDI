@@ -1,0 +1,43 @@
+,,,org     0000H
+0000,02 02 00,,ljmp    main
+,,,org     200h
+,,,
+0200,,main,main:
+0200,12 02 03,,lcall   chuA
+0203,,chuA,chuA:
+0203,75 B0 FE,,mov     p3,#11111110b;hang cuoi 1 thi h2-h7 tat
+0206,75 A0 18,,mov     P2,#00011000b;cot p2.7
+0209,12 02 31,,lcall   wait1s
+,,,
+020C,75 B0 FD,,mov     p3,#11111101b;hang cuoi 1 thi h2-h7 tat
+020F,75 A0 24,,mov     P2,#00100100b;cot p2.7
+0212,12 02 31,,lcall   wait1s
+,,,
+0215,75 B0 FB,,mov     p3,#11111011b;hang cuoi 1 thi h2-h7 tat
+0218,75 A0 42,,mov     P2,#01000010b;cot p2.7
+021B,12 02 31,,lcall   wait1s
+,,,
+021E,75 B0 F7,,mov     p3,#11110111b;hang cuoi 1 thi h2-h7 tat
+0221,75 A0 FF,,mov     P2,#11111111b;cot p2.7
+0224,12 02 31,,lcall   wait1s
+,,,
+0227,75 B0 0F,,mov     p3,#00001111b;hang cuoi 1 thi h2-h7 tat
+022A,75 A0 81,,mov     P2,#10000001b;cot p2.7
+022D,12 02 31,,lcall   wait1s
+0230,22,,ret
+,,,
+0231,,wait1s,wait1s:
+0231,7B 28,,mov     r3,#40
+0233,,here1,here1:
+0233,7C 28,,mov     r4,#40
+,,,
+0235,,here2,here2:
+0235,00,,nop
+0236,00,,nop
+0237,00,,nop
+0238,DC FB,,djnz    r4,here2
+023A,DB F7,,djnz    r3,here1
+023C,22,,ret
+,,,
+,,,
+000E,,,end
